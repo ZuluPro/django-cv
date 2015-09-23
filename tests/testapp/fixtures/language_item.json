@@ -1,0 +1,1 @@
+[{"fields": {"level": "BIL", "language": "French", "resume": 1}, "model": "curriculum.languageitem", "pk": 1}, {"fields": {"level": "PRO", "language": "English", "resume": 1}, "model": "curriculum.languageitem", "pk": 2}]

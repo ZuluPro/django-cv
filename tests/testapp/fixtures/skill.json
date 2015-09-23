@@ -1,0 +1,1 @@
+[{"fields": {"name": "Python", "description": ""}, "model": "curriculum.skill", "pk": 1}, {"fields": {"name": "Django", "description": ""}, "model": "curriculum.skill", "pk": 2}]

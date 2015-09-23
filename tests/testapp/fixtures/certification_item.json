@@ -1,0 +1,1 @@
+[{"fields": {"start_month": 10, "start_year": 2012, "resume": 1, "end_year": null, "expires": false, "end_month": null, "certification": 1}, "model": "curriculum.certificationitem", "pk": 1}]
