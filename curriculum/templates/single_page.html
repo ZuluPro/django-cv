@@ -1,0 +1,77 @@
+{% extends "base_page.html" %}
+
+{% block page_header %}
+ <div id="headerContent">
+   <img src="/static/img/cslogo.png" alt="image" width="200">
+ </div>
+{% endblock %}
+
+{% block content %}
+<div class="bodyContent" id="body-{{ forloop.counter0 }}">
+ <table style="width:100%">
+  <tr>
+   <td style="width:40%">
+    <p><b>Phone:</b> {{ resume.phone }}</p>
+    <p><b>Email:</b> {{ resume.email }}</p>
+    <p><b>Driving license:</b> {{ resume.driving_license }}</p>
+   </td>
+   <td>
+    <h1>{{ resume.firstname }} {{ resume.lastname }} - {{ resume.title }}</h1>
+    <p>{{ resume.resume }}</p>
+   </td>
+  </tr>
+
+  <tr>
+   <td style="width:30%">
+    <h3>Skills</h3>
+    <ul>
+     {% for skill in resume.skills.all %}
+     <li>{{ skill }} - {{ skill.get_level_display }}</li>
+     {% endfor %}
+    </ul>
+    <h3>Languages</h3>
+    <ul>
+     {% for language in resume.languages.all %}
+     <li>{{ language }} - {{ language.get_level_display }}</li>
+     {% endfor %}
+    </ul>
+    <h3>Hobbies</h3>
+    <p>{{ resume.hobbies }}</p>
+   </td>
+   <td>
+    <h3>Projects</h3>
+    {% for project in resume.projects.all %}
+    <h4>{{ project }}</h4>
+    <small>{{ project.start_year }} / {{ project.start_month }}</small>
+    <p>{{ project.project.description }}</p>
+    <p>{{ project.contribution }}</p>
+    {% endfor %}
+    <h3>Experiences</h3>
+    {% for experience in resume.experiences.all %}
+    <h4>{{ experience }}</h4>
+    <small>{{ experience.start_year }} / {{ experience.start_month }}</small>
+    <p>{{ experience.description }}</p>
+    {% endfor %}
+    <h3>Trainings</h3>
+    <ul>
+     {% for training in resume.trainings.all %}
+     <li>{{ training }}</li>
+     {% endfor %}
+    </ul>
+    <h3>Certifications</h3>
+    <ul>
+     {% for certification in resume.certifications.all %}
+     <li>{{ certification }}</li>
+     {% endfor %}
+    </ul>
+   </td>
+  </tr>
+ </table>
+</div>
+{% endblock %}
+
+{% block page_foot %}
+<div id="footerContent">
+ <pdf:pagenumber>
+</div>
+{% endblock %}
