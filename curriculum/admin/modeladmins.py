@@ -1,11 +1,5 @@
 from django.contrib import admin
-from curriculum.models.certification import Certification, CertificationItem
-from curriculum.models.experience import Experience
-from curriculum.models.language import Language, LanguageItem
-from curriculum.models.project import Project, ProjectItem
-from curriculum.models.resume import Resume
-from curriculum.models.skill import Skill, SkillItem
-from curriculum.models.training import Training
+from curriculum import models, forms
 
 
 class ResumeAdmin(admin.ModelAdmin):
@@ -15,7 +9,7 @@ class ResumeAdmin(admin.ModelAdmin):
             'fields': (
                 ('firstname', 'lastname', 'title'),
                 ('resume', 'image'),
-                ('phone', 'email'),
+                ('phone', 'email', 'website'),
                 'address',
                 ('driving_license', 'hobbies'),
                 'tags'
@@ -51,6 +45,7 @@ class CertificationItemAdmin(admin.ModelAdmin):
 
 
 class ExperienceAdmin(admin.ModelAdmin):
+    form = forms.ExperienceForm
     list_display = ('title', 'entreprise', 'resume')
     fieldsets = (
         (None, {
@@ -115,7 +110,11 @@ class ProjectItemAdmin(admin.ModelAdmin):
 class SkillAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ('name', 'description')
+            'fields': (
+                'name',
+                # ('name', 'url'),
+                'description'
+            )
         }),
     )
 
@@ -147,14 +146,14 @@ class TrainingAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(Resume, ResumeAdmin)
-admin.site.register(Certification, CertificationAdmin)
-admin.site.register(CertificationItem, CertificationItemAdmin)
-admin.site.register(Experience, ExperienceAdmin)
-admin.site.register(Language, LanguageAdmin)
-admin.site.register(LanguageItem, LanguageItemAdmin)
-admin.site.register(Project, ProjectAdmin)
-admin.site.register(ProjectItem, ProjectItemAdmin)
-admin.site.register(Skill, SkillAdmin)
-admin.site.register(SkillItem, SkillItemAdmin)
-admin.site.register(Training, TrainingAdmin)
+admin.site.register(models.Resume, ResumeAdmin)
+admin.site.register(models.Certification, CertificationAdmin)
+admin.site.register(models.CertificationItem, CertificationItemAdmin)
+admin.site.register(models.Experience, ExperienceAdmin)
+admin.site.register(models.Language, LanguageAdmin)
+admin.site.register(models.LanguageItem, LanguageItemAdmin)
+admin.site.register(models.Project, ProjectAdmin)
+admin.site.register(models.ProjectItem, ProjectItemAdmin)
+admin.site.register(models.Skill, SkillAdmin)
+admin.site.register(models.SkillItem, SkillItemAdmin)
+admin.site.register(models.Training, TrainingAdmin)

@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import python_2_unicode_compatible
+from curriculum.models.utils import YEARS, MONTHS
 
 
 @python_2_unicode_compatible
@@ -13,8 +14,8 @@ class Training(models.Model):
     result = models.CharField(max_length=150, blank=True, verbose_name=_("result"))
     description = models.TextField(max_length=3000, blank=True, verbose_name=_("description"))
 
-    year = models.IntegerField(verbose_name=_("year"))
-    month = models.IntegerField(verbose_name=_("month"))
+    year = models.IntegerField(choices=YEARS, verbose_name=_("year"))
+    month = models.IntegerField(choices=MONTHS, verbose_name=_("month"))
 
     class Meta:
         app_label = 'curriculum'

@@ -1,77 +1,174 @@
 {% extends "base_page.html" %}
+{% load i18n curriculum %}
+
+{% block style %}
+<style type="text/css">
+@page {
+  size: {{ pagesize }};
+  margin: 0px;
+}
+* {
+  font-size: 15px;
+  height: 0px;
+  padding: 2px;
+  margin: 0px;
+  line-height: 15px;
+  text-indent: 0px;
+  list-style-type: none;
+}
+a {
+  color: #000;
+}
+table {
+  -pdf-keep-in-frame-mode: shrink;
+}
+#top {
+  padding: 10px;
+  text-align: center;
+}
+#top #title {
+  font-size: 30px;
+}
+#side-bar {
+  padding: 10px;
+  vertical-align: top;
+  width: 400px;
+}
+#side-bar ul {
+  margin-left: 10px;
+}
+#images-bar {
+  text-align: center;
+}
+#content-bar {
+  padding: 10px;
+  padding-left: 30px;
+  vertical-align: top;
+}
+#content-bar .h1 {
+  font-size: 21px;
+  text-decoration: underline;
+  text-align: center;
+}
+#content-bar .h2 {
+  font-size: 19px;
+}
+#footer {
+  line-height: 0px;
+}
+.blue-background {
+  background-color: #002e40;
+  color: '#FFFFFF';
+}
+.light-blue-background {
+  background-color: #0C516C;
+  color: '#FFFFFF';
+}
+.blue-background a, .light-blue-background a {
+  color: #FFF;
+}
+.grey-background {
+  background-color: #DBDBDB;
+  color: #444;
+}
+.padding td {
+  text-align: right;
+  vertical-align: bottom;
+  line-height: 50px;
+}
+</style>
+{% endblock %}
 
 {% block page_header %}
- <div id="headerContent">
-   <img src="/static/img/cslogo.png" alt="image" width="200">
- </div>
 {% endblock %}
 
 {% block content %}
 <div class="bodyContent" id="body-{{ forloop.counter0 }}">
  <table style="width:100%">
   <tr>
-   <td style="width:40%">
-    <p><b>Phone:</b> {{ resume.phone }}</p>
-    <p><b>Email:</b> {{ resume.email }}</p>
-    <p><b>Driving license:</b> {{ resume.driving_license }}</p>
-   </td>
-   <td>
-    <h1>{{ resume.firstname }} {{ resume.lastname }} - {{ resume.title }}</h1>
-    <p>{{ resume.resume }}</p>
+   <td id="top" class="blue-background" colspan="2">
+    <b id="title">{{ resume.firstname }} {{ resume.lastname }} - {{ resume.title }}</b>
+    <br><br>
+    <i>{{ resume.resume }}</i>
    </td>
   </tr>
 
   <tr>
-   <td style="width:30%">
-    <h3>Skills</h3>
+   <td id="side-bar" class="light-blue-background">
+    <p id="images-bar">
+    <img height="100" width="100" src="{{ resume.image.url }}"/>
+    <img height="100" width="100" src="{{ resume.website_qrcode }}"/>
+    <p>
+    <b>{% trans "Contact" %}</b>
+    <ul>
+     <li><b>{% trans "Phone" %}:</b> {{ resume.phone }}</li>
+     <li><b>{% trans "Email" %}:</b> <a href="mailto:{{ resume.email }}">{{ resume.email }}</a></li>
+     <li><b>{% trans "Website" %}:</b> {{ resume.website|shortlink|safe }}</li>
+    </ul>
+    <b>{% trans "Skills" %}</b>
     <ul>
      {% for skill in resume.skills.all %}
-     <li>{{ skill }} - {{ skill.get_level_display }}</li>
+     <li>{{ skill }} - {{ skill.get_level_display|capfirst }}</li>
      {% endfor %}
     </ul>
-    <h3>Languages</h3>
+    <b>{% trans "Languages" %}</b>
     <ul>
      {% for language in resume.languages.all %}
-     <li>{{ language }} - {{ language.get_level_display }}</li>
+     <li>{{ language }} - {{ language.get_level_display|capfirst }}</li>
      {% endfor %}
     </ul>
-    <h3>Hobbies</h3>
-    <p>{{ resume.hobbies }}</p>
+    <b>{% trans "Driving license" %}:</b><br>{{ resume.driving_license }}
+    <br><br>
+    <b>{% trans "Hobbies" %}:</b><br>{{ resume.hobbies }}
    </td>
-   <td>
-    <h3>Projects</h3>
-    {% for project in resume.projects.all %}
-    <h4>{{ project }}</h4>
-    <small>{{ project.start_year }} / {{ project.start_month }}</small>
-    <p>{{ project.project.description }}</p>
-    <p>{{ project.contribution }}</p>
-    {% endfor %}
-    <h3>Experiences</h3>
-    {% for experience in resume.experiences.all %}
-    <h4>{{ experience }}</h4>
-    <small>{{ experience.start_year }} / {{ experience.start_month }}</small>
-    <p>{{ experience.description }}</p>
-    {% endfor %}
-    <h3>Trainings</h3>
-    <ul>
+
+   <td id="content-bar" class="grey-background">
+    <b class="h1">{% trans "Projects" %}</b>
+    <div>
+     {% for project in resume.projects.all %}
+      <b class="h2">{{ project }}</b>
+      <small>{% daterange_display project.start_year project.start_month project.end_year project.end_month %}</small>
+      <br>
+      {{ project.contribution|linebreaksbr }}
+      <br><br>
+     {% endfor %}
+    </div>
+
+    <b class="h1">{% trans "Experiences" %}</b>
+    <div>
+     {% for experience in resume.experiences.all %}
+      <b class="h2">{{ experience }}</b>
+      <small>{% daterange_display experience.start_year experience.start_month experience.end_year experience.end_month %}</small>
+      <br>
+      {{ experience.description|linebreaksbr }}
+      <br><br>
+     {% endfor %}
+    </div>
+
+    <b class="h1">{% trans "Trainings" %}</b>
+    <div>
      {% for training in resume.trainings.all %}
-     <li>{{ training }}</li>
+     <b class="h3">{{ training.degree }} in {{ training.topic }}</b>
+      <small>{% daterange_display training.year training.month %}</small>
+      <br><br>
      {% endfor %}
-    </ul>
-    <h3>Certifications</h3>
-    <ul>
+    </div>
+
+    <b class="h1">{% trans "Certifications" %}</b>
+    <div>
      {% for certification in resume.certifications.all %}
-     <li>{{ certification }}</li>
+      <b class="h3">{{ certification }}</b>
+      <small>{% daterange_display certification.start_year certification.start_month %}</small>
      {% endfor %}
-    </ul>
+    </div>
+    <br><br>
+    <br><br>
    </td>
   </tr>
+
  </table>
 </div>
 {% endblock %}
 
 {% block page_foot %}
-<div id="footerContent">
- <pdf:pagenumber>
-</div>
 {% endblock %}

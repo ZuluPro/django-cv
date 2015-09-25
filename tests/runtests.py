@@ -16,6 +16,7 @@ sys.path[0:0] = [HERE, PARENT_DIR]
 # Settings
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'tests/media')
+MEDIA_URL = '/media/'
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,6 +56,7 @@ settings.configure(
     ADMIN=('foo@bar'),
     ALLOWED_HOSTS=['*'],
     MEDIA_ROOT=MEDIA_ROOT,
+    MEDIA_URL=MEDIA_URL,
     MIDDLEWARE_CLASSES=MIDDLEWARE_CLASSES,
     # CACHES={'default': {'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'}},
     INSTALLED_APPS=INSTALLED_APPS,

@@ -40,8 +40,12 @@ def export_resume(request, resume_id):
 def fetch_resources(uri, rel):
     if uri.startswith('/tmp/'):
         path = uri
-    else:
+    elif uri.startswith(settings.STATIC_URL):
         path = os.path.join(
             settings.STATIC_ROOT,
             uri.replace(settings.STATIC_URL, ""))
+    elif uri.startswith(settings.MEDIA_URL):
+        path = os.path.join(
+            settings.MEDIA_ROOT,
+            uri.replace(settings.MEDIA_URL, ""))
     return path
