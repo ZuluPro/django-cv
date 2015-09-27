@@ -1,7 +1,8 @@
 """Utilities for Curriculum's models."""
 from django.utils.translation import ugettext_lazy as _
+from django.utils.timezone import now
 
-YEARS = [(i, i) for i in range(1900, 2100)]
+YEARS = [(i, i) for i in range(1900, 2030)][::-1]
 MONTHS = (
     (1, _('january')),
     (2, _('febuary')),
@@ -16,3 +17,17 @@ MONTHS = (
     (11, _('november')),
     (12, _('december')),
 )
+
+WEIGHTS = (
+    (0, _('Minor')),
+    (1, _('Medium')),
+    (2, _('Major')),
+)
+
+
+def current_year():
+    return now().year
+
+
+def current_month():
+    return now().month

@@ -10,9 +10,10 @@ class ResumeAdmin(admin.ModelAdmin):
                 ('firstname', 'lastname', 'title'),
                 ('resume', 'image'),
                 ('phone', 'email', 'website'),
-                'address',
+                ('country', 'city', 'address'),
+                ('skype', 'stackoverflow', 'github'),
                 ('driving_license', 'hobbies'),
-                'tags'
+                'tags',
             )
         }),
     )
@@ -46,15 +47,19 @@ class CertificationItemAdmin(admin.ModelAdmin):
 
 class ExperienceAdmin(admin.ModelAdmin):
     form = forms.ExperienceForm
-    list_display = ('title', 'entreprise', 'resume')
+    list_display = ('title', 'entreprise', 'resume', 'weight')
     fieldsets = (
         (None, {
             'fields': (
                 'resume',
                 ('title', 'entreprise', 'type'),
+                'context',
                 'description',
+                'results',
+                'environment',
                 ('start_year', 'start_month', 'still'),
                 ('end_year', 'end_month'),
+                'weight',
             )
         }),
     )
@@ -101,31 +106,37 @@ class ProjectItemAdmin(admin.ModelAdmin):
                 'project',
                 'contribution',
                 ('start_year', 'start_month', 'still'),
-                ('end_year', 'end_month')
+                ('end_year', 'end_month'),
+                'weight'
             )
         }),
     )
 
 
 class SkillAdmin(admin.ModelAdmin):
+    list_display = ('name', 'url', 'tags')
+    list_per_page = 200
     fieldsets = (
         (None, {
             'fields': (
-                'name',
-                # ('name', 'url'),
-                'description'
+                ('name', 'url'),
+                'description',
+                ('color', 'tags')
             )
         }),
     )
 
 
 class SkillItemAdmin(admin.ModelAdmin):
-    list_display = ('skill', 'level', 'resume')
+    list_display = ('skill', 'level', 'category', 'resume', 'weight')
+    list_per_page = 200
     fieldsets = (
         (None, {
             'fields': (
                 'resume',
-                ('skill', 'level'),
+                ('skill', 'level', 'category'),
+                ('start_year', 'start_month'),
+                'weight'
             )
         }),
     )

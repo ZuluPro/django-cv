@@ -19,11 +19,18 @@ class Resume(models.Model):
     phone = models.CharField(max_length=100, blank=True, verbose_name=_("phone"))
     website = models.URLField(max_length=300, blank=True, verbose_name=_("website"))
     email = models.CharField(max_length=100, blank=True, verbose_name=_("email"))
+    city = models.CharField(max_length=100, blank=True, verbose_name=_("city"))
+    country = models.CharField(max_length=100, blank=True, verbose_name=_("country"))
     address = models.CharField(max_length=300, blank=True, verbose_name=_("address"))
 
     driving_license = models.CharField(max_length=100, blank=True, verbose_name=_("driving license"))
     hobbies = models.TextField(max_length=1000, blank=True, verbose_name=_("hobbies"))
     tags = models.CharField(max_length=500, blank=True, verbose_name=_("tags"))
+
+    skype = models.CharField(max_length=100, blank=True, verbose_name=_("Skype ID"))
+    twitter = models.CharField(max_length=100, blank=True, verbose_name=_("Twitter"))
+    stackoverflow = models.IntegerField(blank=True, verbose_name=_("StackOverflow ID"))
+    github = models.CharField(max_length=300, blank=True, verbose_name=_("GitHub ID"))
 
     class Meta:
         app_label = 'curriculum'

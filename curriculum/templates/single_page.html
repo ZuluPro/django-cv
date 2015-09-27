@@ -1,7 +1,5 @@
-{% extends "base_page.html" %}
 {% load i18n curriculum %}
 
-{% block style %}
 <style type="text/css">
 @page {
   size: {{ pagesize }};
@@ -15,9 +13,6 @@
   line-height: 15px;
   text-indent: 0px;
   list-style-type: none;
-}
-a {
-  color: #000;
 }
 table {
   -pdf-keep-in-frame-mode: shrink;
@@ -58,11 +53,11 @@ table {
 }
 .blue-background {
   background-color: #002e40;
-  color: '#FFFFFF';
+  color: #FFFFFF;
 }
 .light-blue-background {
   background-color: #0C516C;
-  color: '#FFFFFF';
+  color: #FFFFFF;
 }
 .blue-background a, .light-blue-background a {
   color: #FFF;
@@ -71,19 +66,18 @@ table {
   background-color: #DBDBDB;
   color: #444;
 }
+.grey-background a {
+  color: #444;
+  font-size: 19px;
+}
 .padding td {
   text-align: right;
   vertical-align: bottom;
   line-height: 50px;
 }
 </style>
-{% endblock %}
 
-{% block page_header %}
-{% endblock %}
-
-{% block content %}
-<div class="bodyContent" id="body-{{ forloop.counter0 }}">
+<div class="bodyContent">
  <table style="width:100%">
   <tr>
    <td id="top" class="blue-background" colspan="2">
@@ -107,7 +101,7 @@ table {
     </ul>
     <b>{% trans "Skills" %}</b>
     <ul>
-     {% for skill in resume.skills.all %}
+     {% for skill in skills %}
      <li>{{ skill }} - {{ skill.get_level_display|capfirst }}</li>
      {% endfor %}
     </ul>
@@ -125,8 +119,8 @@ table {
    <td id="content-bar" class="grey-background">
     <b class="h1">{% trans "Projects" %}</b>
     <div>
-     {% for project in resume.projects.all %}
-      <b class="h2">{{ project }}</b>
+     {% for project in projects %}
+      <b class="h2">{{ project.project.url|shortlink:project|safe }}</b>
       <small>{% daterange_display project.start_year project.start_month project.end_year project.end_month %}</small>
       <br>
       {{ project.contribution|linebreaksbr }}
@@ -136,7 +130,7 @@ table {
 
     <b class="h1">{% trans "Experiences" %}</b>
     <div>
-     {% for experience in resume.experiences.all %}
+     {% for experience in experiences %}
       <b class="h2">{{ experience }}</b>
       <small>{% daterange_display experience.start_year experience.start_month experience.end_year experience.end_month %}</small>
       <br>
@@ -147,7 +141,7 @@ table {
 
     <b class="h1">{% trans "Trainings" %}</b>
     <div>
-     {% for training in resume.trainings.all %}
+     {% for training in trainings %}
      <b class="h3">{{ training.degree }} in {{ training.topic }}</b>
       <small>{% daterange_display training.year training.month %}</small>
       <br><br>
@@ -156,19 +150,14 @@ table {
 
     <b class="h1">{% trans "Certifications" %}</b>
     <div>
-     {% for certification in resume.certifications.all %}
+     {% for certification in certifications %}
       <b class="h3">{{ certification }}</b>
       <small>{% daterange_display certification.start_year certification.start_month %}</small>
      {% endfor %}
     </div>
-    <br><br>
-    <br><br>
+    <br>
    </td>
   </tr>
 
  </table>
 </div>
-{% endblock %}
-
-{% block page_foot %}
-{% endblock %}

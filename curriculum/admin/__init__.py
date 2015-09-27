@@ -1,1 +1,1 @@
-import modeladmins
+from . import modeladmins

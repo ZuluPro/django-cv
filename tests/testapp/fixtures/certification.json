@@ -1,1 +1,1 @@
-[{"fields": {"url": "", "description": "", "authority": "Google", "title": "Cloud developer"}, "model": "curriculum.certification", "pk": 1}]
+[{"fields": {"url": "https://cloud.google.com/", "description": "App Engine, Cloud Storage, BigQuery and Compute Engine\r\n", "authority": "Google", "title": "Cloud developer"}, "model": "curriculum.certification", "pk": 1}]

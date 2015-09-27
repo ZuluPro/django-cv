@@ -1,51 +1,22 @@
-import os
-import cgi
-
 from django.http import HttpResponse
-from django.template.loader import get_template
-from django.template import Context
 from django.shortcuts import get_object_or_404
-from django.utils.six import StringIO
-from django.conf import settings
-
-import xhtml2pdf.pisa as pisa
-
 from curriculum import export
 from curriculum.models import Resume
 
 
-def export_resume(request, resume_id):
+def export_single_page(request, resume_id):
     resume = get_object_or_404(Resume.objects.filter(id=resume_id))
-    template = get_template('base_pdf.html')
-    context = Context({
-        'pagesize': 'a4',
-        'title': 'Resume',
-        'introduction': '',
-        'pages': export.single_page(resume)
-    })
-    html = template.render(context)
-    result = StringIO()
-    pdf = pisa.pisaDocument(
-        StringIO(html.encode("UTF-8")),
-        dest=result,
-        encoding='UTF-8',
-        link_callback=fetch_resources
-    )
+    pdf, result = export.export_pdf(resume, export.single_page)
     raw_pdf = result.getvalue()
     if not pdf.err:
         return HttpResponse(raw_pdf, content_type='application/pdf')
-    return HttpResponse('We had some errors<pre>%s</pre>' % cgi.escape(html))
+    return HttpResponse('We had some errors.')
 
 
-def fetch_resources(uri, rel):
-    if uri.startswith('/tmp/'):
-        path = uri
-    elif uri.startswith(settings.STATIC_URL):
-        path = os.path.join(
-            settings.STATIC_ROOT,
-            uri.replace(settings.STATIC_URL, ""))
-    elif uri.startswith(settings.MEDIA_URL):
-        path = os.path.join(
-            settings.MEDIA_ROOT,
-            uri.replace(settings.MEDIA_URL, ""))
-    return path
+def export_classic(request, resume_id):
+    resume = get_object_or_404(Resume.objects.filter(id=resume_id))
+    pdf, result = export.export_pdf(resume, export.classic)
+    raw_pdf = result.getvalue()
+    if not pdf.err:
+        return HttpResponse(raw_pdf, content_type='application/pdf')
+    return HttpResponse('We had some errors.')

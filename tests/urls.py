@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 
 urlpatterns = patterns(
     '',
-    url(r'^export/(?P<resume_id>\d*)', 'curriculum.views.export_resume', name="export_resume"),
+    url(r'^export/(?P<resume_id>\d*)/single_page', 'curriculum.views.export_single_page', name="single_page"),
+    url(r'^export/(?P<resume_id>\d*)(!/classic)?', 'curriculum.views.export_classic', name="classic"),
     url(r'^admin/', include(admin.site.urls)),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

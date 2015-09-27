@@ -36,6 +36,8 @@ def daterange_display(start_year, start_month=None, end_year=None,
 
 
 @register.filter
-def shortlink(value):
-    text = URL_REGEX.sub(r'\1', value)
+def shortlink(value, text=None):
+    if not value:
+        return text
+    text = text or URL_REGEX.sub(r'\1', value)
     return '<a href="%s">%s</a>' % (value, text)
