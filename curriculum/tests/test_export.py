@@ -19,7 +19,7 @@ class ExportSinglePageTest(TestCase):
 class ExportClassicTest(TestCase):
     def test_basic(self):
         resume = factories.ResumeFactory()
-        export.single_page(resume)
+        export.classic(resume)
 
     def test_with_image(self):
         resume = factories.ResumeFactory(image=MEDIA_IMAGE_URL)

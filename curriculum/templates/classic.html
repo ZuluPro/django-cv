@@ -42,7 +42,9 @@
    <table>
     <tr>
      <td style="width: 330px">
+      {% if resume.image %}
       <img height="120" width="120" src="{{ resume.image.url }}"/>
+      {% endif %}
      </td>
      <td class="center">
       <h1 class="h1">{{ resume.firstname }} {{ resume.lastname }}<br>{{ resume.title }}</h1>

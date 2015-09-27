@@ -2,7 +2,7 @@ import factory
 from curriculum import models
 
 
-class ResumeFactory(factory.Factory):
+class ResumeFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.Resume
 
