@@ -17,6 +17,8 @@ sys.path[0:0] = [HERE, PARENT_DIR]
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'tests/media')
 MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'tests/static')
+STATIC_URL = '/static/'
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -66,7 +68,8 @@ settings.configure(
     SITE_ID=1,
     TEMPLATES=TEMPLATES,
     BASE_DIR=BASE_DIR,
-    STATIC_URL='/static/',
+    STATIC_URL=STATIC_URL,
+    STATIC_ROOT=STATIC_ROOT,
 )
 
 
