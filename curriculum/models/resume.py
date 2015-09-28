@@ -29,6 +29,7 @@ class Resume(models.Model):
 
     skype = models.CharField(max_length=100, blank=True, verbose_name=_("Skype ID"))
     twitter = models.CharField(max_length=100, blank=True, verbose_name=_("Twitter"))
+    linkedin = models.CharField(max_length=100, blank=True, verbose_name=_("LinkedIn ID"))
     stackoverflow = models.IntegerField(blank=True, verbose_name=_("StackOverflow ID"))
     github = models.CharField(max_length=300, blank=True, verbose_name=_("GitHub ID"))
 

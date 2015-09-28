@@ -113,6 +113,7 @@ class Migration(migrations.Migration):
                 ('tags', models.CharField(max_length=500, verbose_name='tags', blank=True)),
                 ('skype', models.CharField(max_length=100, verbose_name='Skype ID', blank=True)),
                 ('twitter', models.CharField(max_length=100, verbose_name='Twitter', blank=True)),
+                ('linkedin', models.CharField(max_length=100, verbose_name='LinkedIn ID', blank=True)),
                 ('stackoverflow', models.IntegerField(verbose_name='StackOverflow ID', blank=True)),
                 ('github', models.CharField(max_length=300, verbose_name='GitHub ID', blank=True)),
             ],

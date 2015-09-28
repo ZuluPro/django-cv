@@ -11,7 +11,7 @@ class ResumeAdmin(admin.ModelAdmin):
                 ('resume', 'image'),
                 ('phone', 'email', 'website'),
                 ('country', 'city', 'address'),
-                ('skype', 'stackoverflow', 'github'),
+                ('linkedin', 'skype', 'stackoverflow', 'github'),
                 ('driving_license', 'hobbies'),
                 'tags',
             )
@@ -47,7 +47,9 @@ class CertificationItemAdmin(admin.ModelAdmin):
 
 class ExperienceAdmin(admin.ModelAdmin):
     form = forms.ExperienceForm
-    list_display = ('title', 'entreprise', 'resume', 'weight')
+    list_display = ('title', 'entreprise', 'start_year', 'start_month',
+                    'end_year', 'end_month',
+                    'resume', 'weight')
     fieldsets = (
         (None, {
             'fields': (

@@ -43,7 +43,7 @@
     <tr>
      <td style="width: 330px">
       {% if resume.image %}
-      <img height="120" width="120" src="{{ resume.image.url }}"/>
+       <img height="120" width="120" src="{{ resume.image.url }}"/>
       {% endif %}
      </td>
      <td class="center">
@@ -63,46 +63,58 @@
      </td>
     </tr>
    </table>
-   <hr class=separator>
-   <h2 class="center h2">{% trans "Skills" %}</h2>
-   {% for skill in skills %}
-    {% ifchanged skill.category %}
-     <h3 class="h3">{{ skill.category|capfirst }}</h3>
-    {% endifchanged %}
-     {{ skill }},
-   {% endfor %}
+   {% if skills %}
+    <hr class=separator>
+    <h2 class="center h2">{% trans "Skills" %}</h2>
+    {% for skill in skills %}
+     {% ifchanged skill.category %}
+      <h3 class="h3">{{ skill.category|capfirst }}</h3>
+     {% endifchanged %}
+      {{ skill }},
+    {% endfor %}
+   {% endif %}
    
-   <hr class=separator>
-   <h2 class="center h2">{% trans "Projects" %}</h2>
-   {% for project in projects %}
-    <h3 class="h3">{{ project.project.title }} <small>{% daterange_display project.start_year project.start_month project.end_year project.end_month %}</small></h3>
-    {{ project.contribution|linebreaksbr }}
-   {% endfor %}
+   {% if projects %}
+    <hr class=separator>
+    <h2 class="center h2">{% trans "Projects" %}</h2>
+    {% for project in projects %}
+     <h3 class="h3">{{ project.project.title }} <small>{% daterange_display project.start_year project.start_month project.end_year project.end_month %}</small></h3>
+     {{ project.contribution|linebreaksbr }}
+    {% endfor %}
+   {% endif %}
    
-   <hr class=separator>
-   <h2 class="center h2">{% trans "Experiences" %}</h2>
-   {% for experience in experiences %}
-    <h3 class="h3">{{ experience }} <small>{% daterange_display experience.start_year experience.start_month experience.end_year experience.end_month %}</small></h3>
-    {{ experience.description|linebreaksbr }}
-   {% endfor %}
+   {% if experiences %}
+    <hr class=separator>
+    <h2 class="center h2">{% trans "Experiences" %}</h2>
+    {% for experience in experiences %}
+     <h3 class="h3">{{ experience }} <small>{% daterange_display experience.start_year experience.start_month experience.end_year experience.end_month %}</small></h3>
+     {{ experience.description|linebreaksbr }}
+    {% endfor %}
+   {% endif %}
    
-   <hr class=separator>
-   <h2 class="center h2">{% trans "Training" %}</h2>
-   {% for training in trainings %}
-    <h3 class="h3">{{ training.degree }} in {{ training.topic }} <small>{% daterange_display training.year training.month %}</small></h3>
-    {{ training.description|linebreaksbr }}
-   {% endfor %}
+   {% if trainings %}
+    <hr class=separator>
+    <h2 class="center h2">{% trans "Training" %}</h2>
+    {% for training in trainings %}
+     <h3 class="h3">{{ training.degree }} in {{ training.topic }} <small>{% daterange_display training.year training.month %}</small></h3>
+     {{ training.description|linebreaksbr }}
+    {% endfor %}
+   {% endif %}
    
-   <hr class=separator>
-   <h2 class="center h2">{% trans "Certifications" %}</h2>
-   {% for certification in certifications %}
-    <h3 class="h3">{{ certification }} <small>{% daterange_display certification.start_year certification.start_month %}</small></h3>
-    {{ certification.certification.description|linebreaksbr }}
-   {% endfor %}
+   {% if certifications %}
+    <hr class=separator>
+    <h2 class="center h2">{% trans "Certifications" %}</h2>
+    {% for certification in certifications %}
+     <h3 class="h3">{{ certification }} <small>{% daterange_display certification.start_year certification.start_month %}</small></h3>
+     {{ certification.certification.description|linebreaksbr }}
+    {% endfor %}
+   {% endif %}
    
-   <hr class=separator>
-   <h2 class="center h2">{% trans "Hobbies" %}</h2>
-   {{ resume.hobbies|linebreaksbr }}
+   {% if resume.hobbies %}
+    <hr class=separator>
+    <h2 class="center h2">{% trans "Hobbies" %}</h2>
+    {{ resume.hobbies|linebreaksbr }}
+   {% endif %}
   </div>  
  </body>
 </html>

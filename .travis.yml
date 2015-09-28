@@ -1,0 +1,12 @@
+language: python
+services: mysql
+sudo: false
+python: "2.7"
+
+env: TOX_ENV=py2.7-rl32-django1.8
+
+install: 
+  - pip install tox
+  - tox -e $TOX_ENV -- pip install coveralls
+script: tox -e $TOX_ENV
+after_success: tox -e $TOX_ENV -- coveralls $COVERALLS_OPTION
