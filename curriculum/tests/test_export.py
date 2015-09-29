@@ -26,6 +26,12 @@ class ExportClassicTest(TestCase):
         export.single_page(resume)
 
 
+class ExportCustomClassicTest(TestCase):
+    def test_basic(self):
+        resume = factories.ResumeFactory()
+        export.custom_classic(resume)
+
+
 class ExportPdfTest(TestCase):
     def test_func(self):
         resume = factories.ResumeFactory()

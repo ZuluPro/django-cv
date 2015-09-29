@@ -16,7 +16,7 @@ def single_page(resume):
         'trainings': resume.trainings.order_by('-year', '-month'),
         'certifications': resume.certifications.order_by('-start_year', '-start_month')
     })
-    return get_template('single_page.html').render(context)
+    return get_template('curriculum/single_page.html').render(context)
 
 
 def classic(resume):
@@ -29,7 +29,7 @@ def classic(resume):
         'trainings': resume.trainings.order_by('-year', '-month'),
         'certifications': resume.certifications.order_by('-start_year', '-start_month')
     })
-    return get_template('classic.html').render(context)
+    return get_template('curriculum/classic.html').render(context)
 
 
 def custom_classic(resume, skills=None, projects=None, experiences=None,
@@ -61,7 +61,7 @@ def custom_classic(resume, skills=None, projects=None, experiences=None,
     }
     context_dict.update(options)
     context = Context(context_dict)
-    return get_template('classic.html').render(context)
+    return get_template('curriculum/classic.html').render(context)
 
 
 def export_pdf(resume, resume_func, resume_func_kwargs=None):
