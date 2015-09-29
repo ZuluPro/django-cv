@@ -1,8 +1,10 @@
 from django.contrib import admin
 from curriculum import models, forms
+from curriculum.admin import actions
 
 
 class ResumeAdmin(admin.ModelAdmin):
+    actions = (actions.export_resume,)
     list_display = ('firstname', 'lastname', 'title', 'tags')
     fieldsets = (
         (None, {

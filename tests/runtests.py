@@ -29,6 +29,23 @@ INSTALLED_APPS = (
     'testapp',
     'curriculum',
 )
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+)
+try:
+    DEBUG_TOOLBAR_CONFIG = {}
+    INTERNAL_IPS = ['192.168.254.2']
+    __import__('imp').find_module('debug_toolbar')
+    def show(request):
+        True
+    INSTALLED_APPS += ('debug_toolbar',)
+    MIDDLEWARE_CLASSES = ('debug_toolbar.middleware.DebugToolbarMiddleware',)\
+        + MIDDLEWARE_CLASSES
+except ImportError:
+    SHOW_TOOLBAR_CALLBACK = None
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.template.context_processors.media',
@@ -36,11 +53,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
 )
 TEMPLATE_LOADERS = (
-)
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
 )
 TEMPLATES = [
     {
@@ -70,6 +82,8 @@ settings.configure(
     BASE_DIR=BASE_DIR,
     STATIC_URL=STATIC_URL,
     STATIC_ROOT=STATIC_ROOT,
+    # DEBUG_TOOLBAR_CONFIG=DEBUG_TOOLBAR_CONFIG
+    INTERNAL_IPS=INTERNAL_IPS
 )
 
 

@@ -48,11 +48,11 @@
      </td>
      <td class="center">
       <h1 class="h1">{{ resume.firstname }} {{ resume.lastname }}<br>{{ resume.title }}</h1>
-      <i>{{ resume.resume }}</i>
+      {% if resume.resume %}<i>{{ resume.resume }}</i>{% endif %}
      </td>
      <td style="width: 330px; text-align: right">
         {% if resume.phone %}{{ resume.phone }}<br>{% endif %}
-        {% if resume.city or resume.country %}{{ resume.city }} {{ resume.country }}<br>{% endif %}
+        {% if resume.city or resume.country %}{{ resume.city|default:"" }} {{ resume.country|default:"" }}<br>{% endif %}
         {% if resume.address %}{{ resume.address }}<br>{% endif %}
         {% if resume.email %}<a href="mailto:{{ resume.email }}">{{ resume.email }}</a><br>{% endif %}
         {% if resume.website %}{{ resume.website|shortlink|safe }}<br>{% endif %}
@@ -78,8 +78,21 @@
     <hr class=separator>
     <h2 class="center h2">{% trans "Projects" %}</h2>
     {% for project in projects %}
-     <h3 class="h3">{{ project.project.title }} <small>{% daterange_display project.start_year project.start_month project.end_year project.end_month %}</small></h3>
-     {{ project.contribution|linebreaksbr }}
+     <table>
+      <tr>
+       <td>
+        <h3 class="h3">{{ project.project.title }} <small>{% daterange_display project.start_year project.start_month project.end_year project.end_month %}</small></h3>
+       </td>
+       <td style="text-align: right">
+        {% if not hide_project_url and project.project.url %}<small><a href="{{ project.project.url }}">{{ project.project.url }}</a></small>{% endif %}
+       </td>
+      </tr>
+     </table>
+     {% if not hide_project_contribution and project.contribution %}
+      {{ project.contribution|linebreaksbr }}
+      <br>
+     {% endif %}
+     <br>
     {% endfor %}
    {% endif %}
    
@@ -88,7 +101,8 @@
     <h2 class="center h2">{% trans "Experiences" %}</h2>
     {% for experience in experiences %}
      <h3 class="h3">{{ experience }} <small>{% daterange_display experience.start_year experience.start_month experience.end_year experience.end_month %}</small></h3>
-     {{ experience.description|linebreaksbr }}
+     {% if not hide_experience_description and experience.description %}{{ experience.description|linebreaksbr }}{% endif %}
+     {% if not hide_experience_environment and experience.environment %}<br><br><b>{% trans "Technical environment" %}</b>: {{ experience.environment }}<br>{% endif %}
     {% endfor %}
    {% endif %}
    
@@ -97,7 +111,7 @@
     <h2 class="center h2">{% trans "Training" %}</h2>
     {% for training in trainings %}
      <h3 class="h3">{{ training.degree }} in {{ training.topic }} <small>{% daterange_display training.year training.month %}</small></h3>
-     {{ training.description|linebreaksbr }}
+     {% if not hide_training_description and training.description %}{{ training.description|linebreaksbr }}{% endif %}
     {% endfor %}
    {% endif %}
    
@@ -106,7 +120,7 @@
     <h2 class="center h2">{% trans "Certifications" %}</h2>
     {% for certification in certifications %}
      <h3 class="h3">{{ certification }} <small>{% daterange_display certification.start_year certification.start_month %}</small></h3>
-     {{ certification.certification.description|linebreaksbr }}
+     {% if not hide_certification_description and certification.certification.description %}{{ certification.certification.description|linebreaksbr }}{% endif %}
     {% endfor %}
    {% endif %}
    
