@@ -1,0 +1,468 @@
+# Copyright (C) 2015
+# This file is distributed under the same license as the django-cv package.
+# Anthony Monthe <anthony.monthe@gmail.com>, 2015.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-29 15:28-0400\n"
+"PO-Revision-Date: 2015-09-29 15:28-0400\n"
+"Last-Translator: Anthony Monthe <anthony.monthe@gmail.com>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: admin/actions.py:25
+msgid "Export resume(s) as document"
+msgstr "Exporter des CV en document"
+
+#: admin/actions.py:64
+msgid "Export resume as document"
+msgstr "Exporter le CV en document"
+
+#: apps.py:10
+msgid "Curriculum"
+msgstr "Curriculum"
+
+#: forms.py:40
+msgid "experiences"
+msgstr "experiences"
+
+#: forms.py:45
+msgid "projects"
+msgstr "projects"
+
+#: forms.py:50
+msgid "skills"
+msgstr "compétences"
+
+#: forms.py:55
+msgid "certifications"
+msgstr "certifications"
+
+#: forms.py:60
+msgid "trainings"
+msgstr "formations"
+
+#: forms.py:65
+msgid "languages"
+msgstr "langues"
+
+#: forms.py:78
+msgid "You must specify an end year with end month."
+msgstr "Vous devez spécifier un mois de fin"
+
+#: forms.py:81
+msgid "End year is lower than start."
+msgstr "L'année de fin est inférieure à celle de début"
+
+#: forms.py:84
+msgid "End month is lower than start."
+msgstr "Le mois de fin est supérieur à celui de début"
+
+#: forms.py:90
+msgid "You must specify an end year if experience is finished."
+msgstr "Vous devez spécifier une année de fin si l'expérience est terminée"
+
+#: models/certification.py:9 models/experience.py:19 models/project.py:9
+msgid "title"
+msgstr "titre"
+
+#: models/certification.py:10
+msgid "authority"
+msgstr "authorité"
+
+#: models/certification.py:11 models/project.py:11 models/skill.py:19
+msgid "URL"
+msgstr "URL"
+
+#: models/certification.py:12 models/experience.py:22 models/language.py:17
+#: models/project.py:10 models/skill.py:18 models/training.py:15
+msgid "description"
+msgstr "description"
+
+#: models/certification.py:19 models/certification.py:39
+#, python-format
+msgid "%(title)s at %(authority)s"
+msgstr "%(title)s à %(authority)s"
+
+#: models/certification.py:28 models/experience.py:27 models/project.py:26
+#: models/skill.py:39
+msgid "start year"
+msgstr "année de début"
+
+#: models/certification.py:29 models/experience.py:28 models/project.py:27
+#: models/skill.py:40
+msgid "start month"
+msgstr "mois de début"
+
+#: models/certification.py:30
+msgid "expires"
+msgstr "expire"
+
+#: models/certification.py:31 models/experience.py:30 models/project.py:29
+msgid "end year"
+msgstr "année de fin"
+
+#: models/certification.py:32 models/experience.py:31 models/project.py:30
+msgid "end month"
+msgstr "mois de fin"
+
+#: models/experience.py:7 models/skill.py:7
+msgid "unknown"
+msgstr "inconnu"
+
+#: models/experience.py:8
+msgid "salaried"
+msgstr "salarié"
+
+#: models/experience.py:9
+msgid "founder/chief"
+msgstr "fondateur/chef"
+
+#: models/experience.py:10
+msgid "freelance/chief"
+msgstr "freelance/chef"
+
+#: models/experience.py:11
+msgid "other"
+msgstr "autre"
+
+#: models/experience.py:20
+msgid "entreprise"
+msgstr "entreprise"
+
+#: models/experience.py:21
+msgid "context"
+msgstr "contexte"
+
+#: models/experience.py:23
+msgid "results"
+msgstr "resultats"
+
+#: models/experience.py:24
+msgid "type"
+msgstr "type"
+
+#: models/experience.py:25
+msgid "environment"
+msgstr "environemment"
+
+#: models/experience.py:29
+msgid "still in office"
+msgstr "toujours en poste"
+
+#: models/experience.py:33 models/project.py:32 models/skill.py:42
+msgid "weight"
+msgstr "poids"
+
+#: models/experience.py:39
+#, python-format
+msgid "%(title)s at %(entreprise)s"
+msgstr "%(title)s à %(entreprise)s"
+
+#: models/language.py:6
+msgid "Notion"
+msgstr "notion"
+
+#: models/language.py:7
+msgid "basic"
+msgstr "basic"
+
+#: models/language.py:8 models/skill.py:10
+msgid "advanced"
+msgstr "avancé"
+
+#: models/language.py:9
+msgid "professional"
+msgstr "professionnel"
+
+#: models/language.py:10
+msgid "bilingual"
+msgstr "bilingue"
+
+#: models/language.py:16 models/skill.py:17
+msgid "name"
+msgstr "nom"
+
+#: models/language.py:32 models/skill.py:36
+msgid "level"
+msgstr "niveau"
+
+#: models/project.py:24
+msgid "contribution"
+msgstr "contribution"
+
+#: models/project.py:28
+msgid "still contributor"
+msgstr "toujours contributeur"
+
+#: models/resume.py:13
+msgid "First name"
+msgstr "Prénom"
+
+#: models/resume.py:14
+msgid "Last name"
+msgstr "Nom"
+
+#: models/resume.py:15
+msgid "Title"
+msgstr "Titre"
+
+#: models/resume.py:16 models/resume.py:38
+msgid "resume"
+msgstr "résumé"
+
+#: models/resume.py:17
+msgid "image"
+msgstr "image"
+
+#: models/resume.py:19
+msgid "phone"
+msgstr "téléphone"
+
+#: models/resume.py:20
+msgid "website"
+msgstr "site web"
+
+#: models/resume.py:21
+msgid "email"
+msgstr "email"
+
+#: models/resume.py:22
+msgid "city"
+msgstr "ville"
+
+#: models/resume.py:23
+msgid "country"
+msgstr "pays"
+
+#: models/resume.py:24
+msgid "address"
+msgstr "adresse"
+
+#: models/resume.py:26
+msgid "driving license"
+msgstr "permis"
+
+#: models/resume.py:27
+msgid "hobbies"
+msgstr "loisirs"
+
+#: models/resume.py:28 models/skill.py:20
+msgid "tags"
+msgstr "mots-clef"
+
+#: models/resume.py:30
+msgid "Skype ID"
+msgstr "Identifiant Skype"
+
+#: models/resume.py:31
+msgid "Twitter"
+msgstr "Twitter"
+
+#: models/resume.py:32
+msgid "LinkedIn ID"
+msgstr "Identifiant LinkedIn"
+
+#: models/resume.py:33
+msgid "StackOverflow ID"
+msgstr "Identifiant StackOverflow"
+
+#: models/resume.py:34
+msgid "GitHub ID"
+msgstr "Identifiant GitHub"
+
+#: models/skill.py:8
+msgid "beginner"
+msgstr "débutant"
+
+#: models/skill.py:9
+msgid "skilled"
+msgstr "compétent"
+
+#: models/skill.py:11
+msgid "expert"
+msgstr "expert"
+
+#: models/skill.py:21
+msgid "color"
+msgstr "couleur"
+
+#: models/skill.py:37
+msgid "category"
+msgstr "catégorie"
+
+#: models/training.py:11
+msgid "school"
+msgstr "école"
+
+#: models/training.py:12
+msgid "degree"
+msgstr "diplôme"
+
+#: models/training.py:13
+msgid "topic"
+msgstr "sujet"
+
+#: models/training.py:14
+msgid "result"
+msgstr "resultat"
+
+#: models/training.py:17
+msgid "year"
+msgstr "année"
+
+#: models/training.py:18
+msgid "month"
+msgstr "mois"
+
+#: models/utils.py:7
+msgid "january"
+msgstr "janvier"
+
+#: models/utils.py:8
+msgid "febuary"
+msgstr "février"
+
+#: models/utils.py:9
+msgid "march"
+msgstr "mars"
+
+#: models/utils.py:10
+msgid "april"
+msgstr "avril"
+
+#: models/utils.py:11
+msgid "may"
+msgstr "mai"
+
+#: models/utils.py:12
+msgid "june"
+msgstr "juin"
+
+#: models/utils.py:13
+msgid "july"
+msgstr "juillet"
+
+#: models/utils.py:14
+msgid "august"
+msgstr "août"
+
+#: models/utils.py:15
+msgid "september"
+msgstr "septembre"
+
+#: models/utils.py:16
+msgid "october"
+msgstr "octobre"
+
+#: models/utils.py:17
+msgid "november"
+msgstr "novembre"
+
+#: models/utils.py:18
+msgid "december"
+msgstr "décembre"
+
+#: models/utils.py:22
+msgid "Minor"
+msgstr "Mineur"
+
+#: models/utils.py:23
+msgid "Medium"
+msgstr "Moyen"
+
+#: models/utils.py:24
+msgid "Major"
+msgstr "Majeur"
+
+#: templates/curriculum/classic.html:68
+#: templates/curriculum/single_page.html:104
+msgid "Skills"
+msgstr "Compétences"
+
+#: templates/curriculum/classic.html:79
+#: templates/curriculum/single_page.html:122
+msgid "Projects"
+msgstr "Projets"
+
+#: templates/curriculum/classic.html:101
+#: templates/curriculum/single_page.html:133
+msgid "Experiences"
+msgstr "Experiences"
+
+#: templates/curriculum/classic.html:105
+msgid "Technical environment"
+msgstr "Environemment technique"
+
+#: templates/curriculum/classic.html:111
+msgid "Training"
+msgstr "Formation"
+
+#: templates/curriculum/classic.html:120
+#: templates/curriculum/single_page.html:153
+msgid "Certifications"
+msgstr "Certifications"
+
+#: templates/curriculum/classic.html:129
+#: templates/curriculum/single_page.html:118
+msgid "Hobbies"
+msgstr "Loisirs"
+
+#: templates/curriculum/export.html:142
+msgid "Export"
+msgstr "Exporter"
+
+#: templates/curriculum/single_page.html:98
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/curriculum/single_page.html:100
+msgid "Phone"
+msgstr "Téléphone"
+
+#: templates/curriculum/single_page.html:101
+msgid "Email"
+msgstr "Email"
+
+#: templates/curriculum/single_page.html:102
+msgid "Website"
+msgstr "Site Web"
+
+#: templates/curriculum/single_page.html:110
+msgid "Languages"
+msgstr "Langues"
+
+#: templates/curriculum/single_page.html:116
+msgid "Driving license"
+msgstr "Permis"
+
+#: templates/curriculum/single_page.html:144
+msgid "Trainings"
+msgstr "Formations"
+
+#: templatetags/curriculum.py:25
+#, python-format
+msgid "%(start_year)i to %(end_year)i"
+msgstr "%(start_year)i à %(end_year)i"
+
+#: templatetags/curriculum.py:30
+#, python-format
+msgid "%(start_month)s %(start_year)i to %(end_month)s %(end_year)i"
+msgstr "%(start_month)s %(start_year)i à %(end_month)s %(end_year)i"
+
+#: templatetags/curriculum.py:35
+#, python-format
+msgid "%(start_year)s to %(end_year)i"
+msgstr "%(start_year)s à %(end_year)i"
+
+#: templatetags/curriculum.py:39
+#, python-format
+msgid "%(start_month)s %(start_year)i"
+msgstr "%(start_month)s %(start_year)i"
