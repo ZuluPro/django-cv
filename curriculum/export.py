@@ -1,3 +1,6 @@
+"""
+Utilities for create raw PDF files.
+"""
 import os
 from django.conf import settings
 from django.template import Context
@@ -7,6 +10,9 @@ import xhtml2pdf.pisa as pisa
 
 
 def single_page(resume):
+    """
+    Create a condensed resume in :mod:`xhtml2pdf` format.
+    """
     context = Context({
         'pagesize': 'a4',
         'resume': resume,
@@ -20,6 +26,9 @@ def single_page(resume):
 
 
 def classic(resume):
+    """
+    Create a classic resume in :mod:`xhtml2pdf` format.
+    """
     context = Context({
         'pagesize': 'a4',
         'resume': resume,
@@ -34,6 +43,9 @@ def classic(resume):
 
 def custom_classic(resume, skills=None, projects=None, experiences=None,
                    trainings=None, certifications=None, **options):
+    """
+    Create a classic resume in :mod:`xhtml2pdf` format
+    """
     if skills is None:
         skills = resume.skills.all()
     skills = skills.order_by('category', '-weight')
@@ -65,6 +77,17 @@ def custom_classic(resume, skills=None, projects=None, experiences=None,
 
 
 def export_pdf(resume, resume_func, resume_func_kwargs=None):
+    """
+    Export resume as PDF.
+
+    :param resume: Resume to export
+    :type resume: :class:`curriculum.models.Resume`
+    :param resume_func: Function for create resume as :mod:`xhtml2pdf` format
+    :type resume_func: function
+    :param resume_func_kwargs: Keyword argument for ``resume_func``
+    :type resume_func_kwargs: dict
+    :returns: Raw PDF
+    """
     resume_func_kwargs = resume_func_kwargs or {}
     html = resume_func(resume, **resume_func_kwargs)
     result = StringIO()
@@ -77,6 +100,9 @@ def export_pdf(resume, resume_func, resume_func_kwargs=None):
 
 
 def fetch_resources(uri, rel):
+    """
+    Defines how to get an external file from PDF template engine.
+    """
     if uri.startswith(settings.STATIC_URL):
         path = os.path.join(
             settings.STATIC_ROOT,

@@ -7,4 +7,4 @@ class CurriculumConfig(AppConfig):
     """Config for Curriculum application."""
     name = 'curriculum'
     label = 'curriculum'
-    verbose_name = _('Resume')
+    verbose_name = _('Curriculum')

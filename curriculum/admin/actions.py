@@ -1,3 +1,6 @@
+"""
+Admininistration site actions.
+"""
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import render, get_object_or_404
@@ -8,6 +11,12 @@ from curriculum.forms import ResumeExportForm
 
 
 def export_resume(modeladmin, request, queryset):
+    """
+    Action in two steps:
+
+    1. Display a form for ask which information will be included in document
+    2. Export document with defined data
+    """
     if '_export' not in request.POST:
         resume_ids = request.POST.getlist('_selected_action')
         resumes = Resume.objects.filter(id__in=resume_ids)

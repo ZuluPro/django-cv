@@ -36,7 +36,10 @@ Usage
 =====
 
 All data can be filled in Django's administration site or by custom way.
-Export is made with views:
+You can export you resume as PDF with administration's action. Select in
+details which information you want export and clic. 
+
+You can use or copy the following views for export:
 
 - ``curriculum.views.export_single_page``: For create a single page resume
 - ``curriculum.views.export_classic``: For create a classic resume
