@@ -54,7 +54,8 @@ You can run tests with Tox: ::
 Try it quickly
 ==============
 
-Install it as describe above and launch the following commands: ::
+You can test it with its `demo`_ or install yourself as describe above and
+launch the following commands: ::
 
     pip install django
     python tests/runtests.py migrate
@@ -63,3 +64,5 @@ Install it as describe above and launch the following commands: ::
     python tests/runtests.py runserver 0.0.0.0:8080
 
 Now you can go to http://0.0.0.0:8080 and try the app.
+
+.. _`demo`: https://github.com/ZuluPro/django-cv-demo
