@@ -2,4 +2,4 @@ include LICENSE
 include README.rst
 include *.txt
 include *.rst
-recursive-include * *.html *.js *.json
+recursive-include * *.html *.js *.json *.css *.woff2

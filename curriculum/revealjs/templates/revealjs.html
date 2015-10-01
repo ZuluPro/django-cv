@@ -80,6 +80,9 @@
     <section>
      <section>
       <h1>{% trans "Skills" %}</h1>
+      {% if resume.skill_summary %}
+      <i class="fragment">{{ resume.skill_summary|linebreaksbr }}</i>
+      {% endif %}
      </section>
      {% for skill_subgroup in skills_grouped %}
      <section tagcloud>
@@ -96,6 +99,9 @@
     <section>
      <section>
      <h1>{% trans "Experiences" %}</h1>
+      {% if resume.experience_summary %}
+      <i class="fragment">{{ resume.experience_summary|linebreaksbr }}</i>
+      {% endif %}
      </section>
      {% for experience in experiences %}
       <section>
@@ -110,7 +116,10 @@
    {% if trainings %}
     <section>
      <section>
-     <h1>{% trans "Trainings" %}</h1>
+      <h1>{% trans "Trainings" %}</h1>
+      {% if resume.training_summary %}
+      <i class="fragment">{{ resume.training_summary|linebreaksbr }}</i>
+      {% endif %}
      </section>
      {% for training in trainings %}
       <section>
@@ -125,7 +134,10 @@
    {% if projects %}
     <section>
      <section>
-     <h1>{% trans "Projects" %}</h1>
+      <h1>{% trans "Projects" %}</h1>
+      {% if resume.project_summary %}
+      <i class="fragment">{{ resume.project_summary|linebreaksbr }}</i>
+      {% endif %}
      </section>
      {% for project in projects %}
       <section>
@@ -178,7 +190,7 @@
    {% endif %}
 
    <section>
-    <h1>{% trans "That's me" %}</h1>
+    <h1>{% trans "That's me !" %}</h1>
     <h3>{% trans "Press ESC for get an overview" %}</h3>
    </section>
   

@@ -25,6 +25,11 @@ class Resume(models.Model):
     country = models.CharField(max_length=100, blank=True, null=True, verbose_name=_("country"))
     address = models.CharField(max_length=300, blank=True, null=True, verbose_name=_("address"))
 
+    skill_summary = models.TextField(max_length=1000, blank=True, null=True, verbose_name=_("summary of skills"))
+    experience_summary = models.TextField(max_length=1000, blank=True, null=True, verbose_name=_("summary of experience"))
+    training_summary = models.TextField(max_length=1000, blank=True, null=True, verbose_name=_("summary of trainings"))
+    project_summary = models.TextField(max_length=1000, blank=True, null=True, verbose_name=_("summary of projects"))
+
     driving_license = models.CharField(max_length=100, blank=True, null=True, verbose_name=_("driving license"))
     hobbies = models.TextField(max_length=1000, blank=True, null=True, verbose_name=_("hobbies"))
     tags = models.CharField(max_length=500, blank=True, null=True, verbose_name=_("tags"))
@@ -32,7 +37,7 @@ class Resume(models.Model):
     skype = models.CharField(max_length=100, blank=True, null=True, verbose_name=_("Skype ID"))
     twitter = models.CharField(max_length=100, blank=True, null=True, verbose_name=_("Twitter"))
     linkedin = models.CharField(max_length=100, blank=True, null=True, verbose_name=_("LinkedIn ID"))
-    # google = models.IntegerField(max_length=100, blank=True, null=True, verbose_name=_("Google+ ID"))
+    google = models.CharField(max_length=100, blank=True, null=True, verbose_name=_("Google+ ID"))
     stackoverflow = models.IntegerField(blank=True, null=True, verbose_name=_("StackOverflow ID"))
     github = models.CharField(max_length=300, blank=True, null=True, verbose_name=_("GitHub ID"))
 

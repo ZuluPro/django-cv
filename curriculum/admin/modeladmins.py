@@ -13,7 +13,11 @@ class ResumeAdmin(admin.ModelAdmin):
                 ('resume', 'image'),
                 ('phone', 'email', 'website'),
                 ('country', 'city', 'address'),
-                ('linkedin', 'skype', 'stackoverflow', 'github'),
+                'skill_summary',
+                'experience_summary',
+                'training_summary',
+                'project_summary',
+                ('linkedin', 'skype', 'stackoverflow', 'github', 'google'),
                 ('driving_license', 'hobbies'),
                 'tags',
             )
