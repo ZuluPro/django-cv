@@ -192,6 +192,10 @@
    <section>
     <h1>{% trans "That's me !" %}</h1>
     <h3>{% trans "Press ESC for get an overview" %}</h3>
+    {% if resume.website %}
+    <h4>{% trans "or" %}</h4>
+    <h3>{% trans "Go back to" %} <a href="{{ resume.website }}">{% trans "my website" %}</h3>
+    {% endif %}
    </section>
   
   </div>
@@ -208,7 +212,7 @@
   Reveal.initialize({
   controls: true,
   progress: true,
-  history: true,
+  history: false,
   center: true,
   
   transition: 'slide', // none/fade/slide/convex/concave/zoom
